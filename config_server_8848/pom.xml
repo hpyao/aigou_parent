@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>eureka_server_7001</artifactId>
+    <artifactId>config_server_8848</artifactId>
 
     <dependencies>
         <!--springboot支持-->
@@ -20,23 +20,26 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
-        <!--Eureka服务端-->
+
+        <!--eureka客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
+        <!--配置中心支持-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>cn.itsource.aigou.EurekaServer_7001</mainClass>
+                    <mainClass>cn.itsource.aigou.ConfigServerApplication_8848</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>
@@ -49,5 +52,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

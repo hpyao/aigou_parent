@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="basic_util" />
+        <module name="config_server_8848" />
         <module name="eureka_server" />
         <module name="eureka_server_7001" />
         <module name="plat_interface" />
@@ -19,6 +20,7 @@
       <module name="aigou_parent" target="1.8" />
       <module name="basic_parent" target="1.8" />
       <module name="basic_util" target="1.8" />
+      <module name="config_server_8848" target="1.8" />
       <module name="eureka_server" target="1.8" />
       <module name="eureka_server_7001" target="1.8" />
       <module name="plat_interface" target="1.8" />

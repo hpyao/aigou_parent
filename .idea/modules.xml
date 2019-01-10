@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/aigou_parent.iml" filepath="$PROJECT_DIR$/aigou_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic_parent/basic_parent.iml" filepath="$PROJECT_DIR$/basic_parent/basic_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic_parent/basic_util/basic_util.iml" filepath="$PROJECT_DIR$/basic_parent/basic_util/basic_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config_server_8848/config_server_8848.iml" filepath="$PROJECT_DIR$/config_server_8848/config_server_8848.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka_server_7001/eureka_server_7001.iml" filepath="$PROJECT_DIR$/eureka_server_7001/eureka_server_7001.iml" />
       <module fileurl="file://$PROJECT_DIR$/plat_parent/plat_interface/plat_interface.iml" filepath="$PROJECT_DIR$/plat_parent/plat_interface/plat_interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/plat_parent/plat_parent.iml" filepath="$PROJECT_DIR$/plat_parent/plat_parent.iml" />
