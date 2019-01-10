@@ -2,36 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aefc5833-927b-4dce-93a5-c7e5dfb1f504" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_6.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jsch_0_1_54.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jzlib_1_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_4_11_0_201803080745_r.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_http_apache_4_11_0_201803080745_r.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_config_client_2_0_1_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_config_server_2_0_1_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_config_2_0_1_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/config_server_8848/config_server_8848.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/config_server_8848/pom.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/config_server_8848/src/main/java/cn/itsource/aigou/ConfigServerApplication_8848.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/config_server_8848/src/main/resources/application.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/plat_parent/plat_service_8001/readme.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/plat_parent/plat_service_8001/src/main/resources/bootstrap.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/zuul_gateway_9527/src/main/resources/bootstrap.yml" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/basic_parent/basic_util/target/classes/cn/itsource/aigou/query/BaseQuery.class" afterPath="$PROJECT_DIR$/basic_parent/basic_util/target/classes/cn/itsource/aigou/query/BaseQuery.class" />
-      <change beforePath="$PROJECT_DIR$/eureka_server_7001/pom.xml" afterPath="$PROJECT_DIR$/eureka_server_7001/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/plat_parent/plat_service_8001/plat_service_8001.iml" afterPath="$PROJECT_DIR$/plat_parent/plat_service_8001/plat_service_8001.iml" />
-      <change beforePath="$PROJECT_DIR$/plat_parent/plat_service_8001/pom.xml" afterPath="$PROJECT_DIR$/plat_parent/plat_service_8001/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/plat_parent/plat_service_8001/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/plat_parent/plat_service_8001/src/main/resources/application.yml" />
       <change beforePath="$PROJECT_DIR$/plat_parent/plat_service_8001/target/classes/application.yml" afterPath="$PROJECT_DIR$/plat_parent/plat_service_8001/target/classes/application.yml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/zuul_gateway_9527/pom.xml" afterPath="$PROJECT_DIR$/zuul_gateway_9527/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/zuul_gateway_9527/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/zuul_gateway_9527/src/main/resources/application.yml" />
-      <change beforePath="$PROJECT_DIR$/zuul_gateway_9527/zuul_gateway_9527.iml" afterPath="$PROJECT_DIR$/zuul_gateway_9527/zuul_gateway_9527.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -478,7 +451,7 @@
       <updated>1547014202916</updated>
       <workItem from="1547014208297" duration="13389000" />
       <workItem from="1547087399569" duration="1381000" />
-      <workItem from="1547091809120" duration="5125000" />
+      <workItem from="1547091809120" duration="5155000" />
     </task>
     <task id="LOCAL-00001" summary="测试">
       <created>1547091876753</created>
@@ -487,11 +460,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547091876753</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="测试">
+      <created>1547105480894</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1547105480894</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19895000" />
+    <option name="totallyTimeSpent" value="19925000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
