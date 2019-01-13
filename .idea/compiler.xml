@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="aigou_gen" />
         <module name="basic_util" />
         <module name="config_server_8848" />
         <module name="eureka_server" />
@@ -13,10 +14,13 @@
         <module name="plat_interface" />
         <module name="plat_service" />
         <module name="plat_service_8001" />
+        <module name="product_interface" />
+        <module name="product_service_8002" />
         <module name="zuul_gateway_9527" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="aigou_gen" target="1.8" />
       <module name="aigou_parent" target="1.8" />
       <module name="basic_parent" target="1.8" />
       <module name="basic_util" target="1.8" />
@@ -27,6 +31,9 @@
       <module name="plat_parent" target="1.8" />
       <module name="plat_service" target="1.8" />
       <module name="plat_service_8001" target="1.8" />
+      <module name="product_interface" target="1.8" />
+      <module name="product_parent" target="1.8" />
+      <module name="product_service_8002" target="1.8" />
       <module name="zuul_gateway_9527" target="1.8" />
     </bytecodeTargetLevel>
   </component>

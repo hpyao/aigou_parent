@@ -14,6 +14,8 @@
         <module>basic_parent</module>
         <module>plat_parent</module>
         <module>config_server_8848</module>
+        <module>product_parent</module>
+        <module>aigou_gen</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

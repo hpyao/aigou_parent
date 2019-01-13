@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aigou_gen" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/basic_parent" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/basic_parent/basic_util" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config_server_8848" charset="UTF-8" />
@@ -9,6 +10,9 @@
     <file url="file://$PROJECT_DIR$/plat_parent" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/plat_parent/plat_interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/plat_parent/plat_service_8001" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product_parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product_parent/product_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product_parent/product_service_8002" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/zuul_gateway_9527" charset="UTF-8" />
   </component>
 </project>
