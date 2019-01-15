@@ -65,8 +65,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-
-
         <!--eureka客户端支持 内部间调用别人接口-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
