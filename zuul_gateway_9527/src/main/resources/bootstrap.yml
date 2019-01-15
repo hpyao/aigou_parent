@@ -16,3 +16,12 @@ eureka: #eureka不能放到远程配置中
      defaultZone: http://localhost:7001/eureka  #告诉服务提供者要把服务注册到哪儿 #单机环境
   instance:
     prefer-ip-address: true #显示客户端真实ip
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8000

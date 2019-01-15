@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/aigou_gen/aigou_gen.iml" filepath="$PROJECT_DIR$/aigou_gen/aigou_gen.iml" />
       <module fileurl="file://$PROJECT_DIR$/aigou_parent.iml" filepath="$PROJECT_DIR$/aigou_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic_parent/basic_parent.iml" filepath="$PROJECT_DIR$/basic_parent/basic_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic_parent/basic_util/basic_util.iml" filepath="$PROJECT_DIR$/basic_parent/basic_util/basic_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_parent/common_interface/common_interface.iml" filepath="$PROJECT_DIR$/common_parent/common_interface/common_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_parent/common_parent.iml" filepath="$PROJECT_DIR$/common_parent/common_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_parent/common_service_8010/common_service_8010.iml" filepath="$PROJECT_DIR$/common_parent/common_service_8010/common_service_8010.iml" />
       <module fileurl="file://$PROJECT_DIR$/config_server_8848/config_server_8848.iml" filepath="$PROJECT_DIR$/config_server_8848/config_server_8848.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka_server_7001/eureka_server_7001.iml" filepath="$PROJECT_DIR$/eureka_server_7001/eureka_server_7001.iml" />
       <module fileurl="file://$PROJECT_DIR$/plat_parent/plat_interface/plat_interface.iml" filepath="$PROJECT_DIR$/plat_parent/plat_interface/plat_interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/plat_parent/plat_parent.iml" filepath="$PROJECT_DIR$/plat_parent/plat_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/plat_parent/plat_service_8001/plat_service_8001.iml" filepath="$PROJECT_DIR$/plat_parent/plat_service_8001/plat_service_8001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product_parent/product_interface/product_interface.iml" filepath="$PROJECT_DIR$/product_parent/product_interface/product_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product_parent/product_parent.iml" filepath="$PROJECT_DIR$/product_parent/product_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product_parent/product_service_8002/product_service_8002.iml" filepath="$PROJECT_DIR$/product_parent/product_service_8002/product_service_8002.iml" />
       <module fileurl="file://$PROJECT_DIR$/zuul_gateway_9527/zuul_gateway_9527.iml" filepath="$PROJECT_DIR$/zuul_gateway_9527/zuul_gateway_9527.iml" />
     </modules>
   </component>

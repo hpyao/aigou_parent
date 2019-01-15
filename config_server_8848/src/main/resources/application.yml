@@ -7,12 +7,16 @@ eureka:
   instance:
     prefer-ip-address: true
 spring:
+  profiles:
+    active: native
   application:
     name: aigou-config-server
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/hpyao/aigou-config2.git
-          username: hpyao
-          password: Itsource20180731
+        native:
+          search-locations: C:/Users/Administrator/Desktop/aigou-config2
+#        git:
+#          uri: https://github.com/hpyao/aigou-config2.git
+#          username: hpyao
+#          password: Itsource20180731
