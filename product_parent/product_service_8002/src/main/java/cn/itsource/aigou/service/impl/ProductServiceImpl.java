@@ -2,12 +2,13 @@ package cn.itsource.aigou.service.impl;
 
 import cn.itsource.aigou.domain.Product;
 import cn.itsource.aigou.domain.ProductExt;
+import cn.itsource.aigou.domain.Specification;
 import cn.itsource.aigou.mapper.ProductExtMapper;
 import cn.itsource.aigou.mapper.ProductMapper;
-import cn.itsource.aigou.mapper.ProductTypeMapper;
 import cn.itsource.aigou.query.ProductQuery;
 import cn.itsource.aigou.service.IProductService;
 import cn.itsource.aigou.util.PageList;
+import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -44,6 +45,18 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         List<Product> data =  productMapper.loadPageData(page,query);
         long total = page.getTotal();
         return new PageList<>(total,data);
+    }
+
+    @Override
+    public void addViewProperties(Long productId, List<Specification> specifications) {
+        //fastJson
+        String viewProperties = JSONArray.toJSONString(specifications);
+        //获取商品
+        Product product = productMapper.selectById(productId);
+        //设置viewProperties
+        product.setViewProperties(viewProperties);
+        //修改
+        productMapper.updateById(product);
     }
 
     @Override

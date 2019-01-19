@@ -26,6 +26,7 @@
         <result column="commonCommentCount" property="commonCommentCount" />
         <result column="medias" property="medias" />
         <result column="badCommentCount" property="badCommentCount" />
+        <result column="sku_template" property="skuTemplate" />
     </resultMap>
 
 
@@ -70,6 +71,7 @@
         <result column="commonCommentCount" property="commonCommentCount" />
         <result column="medias" property="medias" />
         <result column="badCommentCount" property="badCommentCount" />
+        <result column="sku_template" property="skuTemplate" />
         <!--品牌和类型-->
         <association property="brand" javaType="Brand">
             <id column="bid" property="id" />

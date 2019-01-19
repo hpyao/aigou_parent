@@ -1,8 +1,8 @@
 package cn.itsource.aigou.controller;
 
-import cn.itsource.aigou.service.ITypeTemplateService;
-import cn.itsource.aigou.domain.TypeTemplate;
-import cn.itsource.aigou.query.TypeTemplateQuery;
+import cn.itsource.aigou.service.ISkuService;
+import cn.itsource.aigou.domain.Sku;
+import cn.itsource.aigou.query.SkuQuery;
 import cn.itsource.aigou.util.AjaxResult;
 import cn.itsource.aigou.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/typeTemplate")
-public class TypeTemplateController {
+@RequestMapping("/sku")
+public class SkuController {
     @Autowired
-    public ITypeTemplateService typeTemplateService;
+    public ISkuService skuService;
 
     /**
     * 保存和修改公用的
-    * @param typeTemplate  传递的实体
+    * @param sku  传递的实体
     * @return Ajaxresult转换结果
     */
     @RequestMapping(value="/save",method= RequestMethod.POST)
-    public AjaxResult save(@RequestBody TypeTemplate typeTemplate){
+    public AjaxResult save(@RequestBody Sku sku){
         try {
-            if(typeTemplate.getId()!=null){
-                typeTemplateService.updateById(typeTemplate);
+            if(sku.getId()!=null){
+                skuService.updateById(sku);
             }else{
-                typeTemplateService.insert(typeTemplate);
+                skuService.insert(sku);
             }
             return AjaxResult.me();
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public class TypeTemplateController {
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Long id){
         try {
-            typeTemplateService.deleteById(id);
+            skuService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
@@ -55,9 +55,9 @@ public class TypeTemplateController {
 
     //获取用户
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public TypeTemplate get(@PathVariable("id")Long id)
+    public Sku get(@PathVariable("id")Long id)
     {
-        return typeTemplateService.selectById(id);
+        return skuService.selectById(id);
     }
 
 
@@ -66,9 +66,9 @@ public class TypeTemplateController {
     * @return
     */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<TypeTemplate> list(){
+    public List<Sku> list(){
 
-        return typeTemplateService.selectList(null);
+        return skuService.selectList(null);
     }
 
 
@@ -79,10 +79,10 @@ public class TypeTemplateController {
     * @return PageList 分页对象
     */
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<TypeTemplate> json(@RequestBody TypeTemplateQuery query)
+    public PageList<Sku> json(@RequestBody SkuQuery query)
     {
-        Page<TypeTemplate> page = new Page<TypeTemplate>(query.getPage(),query.getRows());
-            page = typeTemplateService.selectPage(page);
-            return new PageList<TypeTemplate>(page.getTotal(),page.getRecords());
+        Page<Sku> page = new Page<Sku>(query.getPage(),query.getRows());
+            page = skuService.selectPage(page);
+            return new PageList<Sku>(page.getTotal(),page.getRecords());
     }
 }

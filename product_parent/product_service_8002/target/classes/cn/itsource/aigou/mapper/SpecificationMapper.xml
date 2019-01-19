@@ -5,7 +5,9 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.itsource.aigou.domain.Specification">
         <id column="id" property="id" />
-        <result column="specName" property="specName" />
+        <result column="name" property="name" />
+        <result column="product_type_id" property="productTypeId" />
+        <result column="is_sku" property="isSku" />
     </resultMap>
 
 </mapper>

@@ -49,6 +49,13 @@ public class Product extends Model<Product> {
 
     @TableField(exist = false)
     private ProductType productType; //用来返回数据到前台
+
+
+    /**
+     * sku选项模板
+     */
+    @TableField("sku_template")
+    private String skuTemplate;
     /**
      * 上架时间
      */
@@ -338,5 +345,13 @@ public class Product extends Model<Product> {
 
     public void setProductExt(ProductExt productExt) {
         this.productExt = productExt;
+    }
+
+    public String getSkuTemplate() {
+        return skuTemplate;
+    }
+
+    public void setSkuTemplate(String skuTemplate) {
+        this.skuTemplate = skuTemplate;
     }
 }

@@ -1,9 +1,12 @@
 package cn.itsource.aigou.service;
 
 import cn.itsource.aigou.domain.Product;
+import cn.itsource.aigou.domain.Specification;
 import cn.itsource.aigou.query.ProductQuery;
 import cn.itsource.aigou.util.PageList;
 import com.baomidou.mybatisplus.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -21,4 +24,11 @@ public interface IProductService extends IService<Product> {
      * @return
      */
     PageList<Product> selectPageList(ProductQuery query);
+
+    /**
+     * 添加显示属性
+     * @param productId
+     * @param specifications
+     */
+    void addViewProperties(Long productId, List<Specification> specifications);
 }
