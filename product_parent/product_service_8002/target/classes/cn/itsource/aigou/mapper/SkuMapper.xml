@@ -5,20 +5,11 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.itsource.aigou.domain.Sku">
         <id column="id" property="id" />
-        <result column="createTime" property="createTime" />
-        <result column="updateTime" property="updateTime" />
         <result column="productId" property="productId" />
-        <result column="skuCode" property="skuCode" />
-        <result column="skuName" property="skuName" />
-        <result column="marketPrice" property="marketPrice" />
         <result column="price" property="price" />
-        <result column="costPrice" property="costPrice" />
-        <result column="saleCount" property="saleCount" />
-        <result column="sortIndex" property="sortIndex" />
-        <result column="availableStock" property="availableStock" />
-        <result column="frozenStock" property="frozenStock" />
+        <result column="stock" property="stock" />
         <result column="skuValues" property="skuValues" />
-        <result column="skuMainPic" property="skuMainPic" />
+        <result column="state" property="state" />
         <result column="indexs" property="indexs" />
     </resultMap>
 

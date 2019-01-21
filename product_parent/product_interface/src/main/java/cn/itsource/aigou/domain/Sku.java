@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author yhptest
- * @since 2019-01-19
+ * @since 2019-01-21
  */
 @TableName("t_sku")
 public class Sku extends Model<Sku> {
@@ -21,53 +21,23 @@ public class Sku extends Model<Sku> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
-    private Long createTime;
-    private Long updateTime;
     /**
      * 商品ID
      */
     private Long productId;
     /**
-     * SKU编码
-     */
-    private String skuCode;
-    private String skuName;
-    /**
-     * 市场价
-     */
-    private Integer marketPrice;
-    /**
      * 优惠价
      */
     private Integer price;
     /**
-     * 成本价
-     */
-    private Integer costPrice;
-    /**
-     * 销量
-     */
-    private Integer saleCount;
-    /**
-     * 排序
-     */
-    private Integer sortIndex;
-    /**
      * 可用库存
      */
-    private Integer availableStock;
-    /**
-     * 锁定库存
-     */
-    private Integer frozenStock;
+    private Integer stock;
     /**
      * SKU属性摘要
      */
     private String skuValues;
-    /**
-     * 预览图
-     */
-    private String skuMainPic;
+    private Boolean state;
     private String indexs;
 
 
@@ -79,52 +49,12 @@ public class Sku extends Model<Sku> {
         this.id = id;
     }
 
-    public Long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Long createTime) {
-        this.createTime = createTime;
-    }
-
-    public Long getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Long updateTime) {
-        this.updateTime = updateTime;
-    }
-
     public Long getProductId() {
         return productId;
     }
 
     public void setProductId(Long productId) {
         this.productId = productId;
-    }
-
-    public String getSkuCode() {
-        return skuCode;
-    }
-
-    public void setSkuCode(String skuCode) {
-        this.skuCode = skuCode;
-    }
-
-    public String getSkuName() {
-        return skuName;
-    }
-
-    public void setSkuName(String skuName) {
-        this.skuName = skuName;
-    }
-
-    public Integer getMarketPrice() {
-        return marketPrice;
-    }
-
-    public void setMarketPrice(Integer marketPrice) {
-        this.marketPrice = marketPrice;
     }
 
     public Integer getPrice() {
@@ -135,44 +65,12 @@ public class Sku extends Model<Sku> {
         this.price = price;
     }
 
-    public Integer getCostPrice() {
-        return costPrice;
+    public Integer getStock() {
+        return stock;
     }
 
-    public void setCostPrice(Integer costPrice) {
-        this.costPrice = costPrice;
-    }
-
-    public Integer getSaleCount() {
-        return saleCount;
-    }
-
-    public void setSaleCount(Integer saleCount) {
-        this.saleCount = saleCount;
-    }
-
-    public Integer getSortIndex() {
-        return sortIndex;
-    }
-
-    public void setSortIndex(Integer sortIndex) {
-        this.sortIndex = sortIndex;
-    }
-
-    public Integer getAvailableStock() {
-        return availableStock;
-    }
-
-    public void setAvailableStock(Integer availableStock) {
-        this.availableStock = availableStock;
-    }
-
-    public Integer getFrozenStock() {
-        return frozenStock;
-    }
-
-    public void setFrozenStock(Integer frozenStock) {
-        this.frozenStock = frozenStock;
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
     public String getSkuValues() {
@@ -183,12 +81,12 @@ public class Sku extends Model<Sku> {
         this.skuValues = skuValues;
     }
 
-    public String getSkuMainPic() {
-        return skuMainPic;
+    public Boolean getState() {
+        return state;
     }
 
-    public void setSkuMainPic(String skuMainPic) {
-        this.skuMainPic = skuMainPic;
+    public void setState(Boolean state) {
+        this.state = state;
     }
 
     public String getIndexs() {
@@ -208,20 +106,11 @@ public class Sku extends Model<Sku> {
     public String toString() {
         return "Sku{" +
         ", id=" + id +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
         ", productId=" + productId +
-        ", skuCode=" + skuCode +
-        ", skuName=" + skuName +
-        ", marketPrice=" + marketPrice +
         ", price=" + price +
-        ", costPrice=" + costPrice +
-        ", saleCount=" + saleCount +
-        ", sortIndex=" + sortIndex +
-        ", availableStock=" + availableStock +
-        ", frozenStock=" + frozenStock +
+        ", stock=" + stock +
         ", skuValues=" + skuValues +
-        ", skuMainPic=" + skuMainPic +
+        ", state=" + state +
         ", indexs=" + indexs +
         "}";
     }

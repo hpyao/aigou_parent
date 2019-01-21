@@ -1,12 +1,14 @@
 package cn.itsource.aigou.service;
 
 import cn.itsource.aigou.domain.Product;
+import cn.itsource.aigou.domain.Sku;
 import cn.itsource.aigou.domain.Specification;
 import cn.itsource.aigou.query.ProductQuery;
 import cn.itsource.aigou.util.PageList;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -31,4 +33,19 @@ public interface IProductService extends IService<Product> {
      * @param specifications
      */
     void addViewProperties(Long productId, List<Specification> specifications);
+
+    /**
+     * 添加sku
+     * @param productId
+     * @param skuProperties
+     * @param skuDatas
+     */
+    void addSkus(Long productId, List<Map<String,Object>> skuProperties, List<Map<String,Object>> skuDatas);
+
+    /**
+     * 通过商品id查询sku
+     * @param productId
+     * @return
+     */
+    List<Sku> querySkus(Long productId);
 }

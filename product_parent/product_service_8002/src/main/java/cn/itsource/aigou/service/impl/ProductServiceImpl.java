@@ -2,9 +2,11 @@ package cn.itsource.aigou.service.impl;
 
 import cn.itsource.aigou.domain.Product;
 import cn.itsource.aigou.domain.ProductExt;
+import cn.itsource.aigou.domain.Sku;
 import cn.itsource.aigou.domain.Specification;
 import cn.itsource.aigou.mapper.ProductExtMapper;
 import cn.itsource.aigou.mapper.ProductMapper;
+import cn.itsource.aigou.mapper.SkuMapper;
 import cn.itsource.aigou.query.ProductQuery;
 import cn.itsource.aigou.service.IProductService;
 import cn.itsource.aigou.util.PageList;
@@ -15,9 +17,9 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rx.internal.util.unsafe.SpscUnboundedArrayQueue;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static javax.swing.UIManager.get;
 
@@ -38,6 +40,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     @Autowired
     private ProductExtMapper productExtMapper;
 
+    @Autowired
+    private SkuMapper skuMapper;
+
     @Override
     public PageList<Product> selectPageList(ProductQuery query) {
 
@@ -57,6 +62,118 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         product.setViewProperties(viewProperties);
         //修改
         productMapper.updateById(product);
+    }
+
+    @Override
+    public void addSkus(Long productId, List<Map<String,Object>> skuProperties, List<Map<String,Object>> skuDatas) {
+        Product product = productMapper.selectById(productId);
+        //skuProperties修改到product
+        product.setSkuTemplate(JSONArray.toJSONString(skuProperties));
+        productMapper.updateById(product);
+        //skuDatas放入sku表
+        //1 删除原来的
+        EntityWrapper<Sku> wapper = new EntityWrapper<>();
+        wapper.eq("productId", productId);
+        skuMapper.delete(wapper);
+
+        //2 插入新的
+        Map<String,Object> otherProp = new HashMap<>();
+        for (Map<String, Object> skuData : skuDatas) {
+            Sku sku = new Sku();
+            //处理了四个字段
+            sku.setProductId(productId);
+            for (String key : skuData.keySet()) {
+                //price,stock,state是直接传递进来
+                if ("price".equals(key)){
+                    sku.setPrice(Integer.valueOf(skuData.get(key).toString()));
+                }
+                else  if ("stock".equals(key)){
+                    sku.setStock(Integer.valueOf(skuData.get(key).toString()));
+                }
+                else if ("state".equals(key)){
+                    Integer state = (Integer) skuData.get(key);
+                    sku.setState(state==1?true:false);
+                }else{
+                    //others 升高 三维
+                    otherProp.put(key, skuData.get(key));
+                }
+
+            }
+            //处理其他值
+            List<Map<String,Object>> tmps = new ArrayList<>();
+            for (String key : otherProp.keySet()) {
+                Map<String,Object> map = new HashMap<>();
+                String properName = key;
+                Long properId = getProId(skuProperties,properName);//TODO
+                Object proValue = otherProp.get(key);//TODO
+                map.put("id", properId);
+                map.put("key", properName);
+                map.put("value", proValue);
+                tmps.add(map);
+            }
+            String skuValues = JSONArray.toJSONString(tmps);
+            sku.setSkuValues(skuValues);
+
+            //indexDexs 1_2_3
+            StringBuilder sb = new StringBuilder();
+            for (Map<String, Object> map : tmps) {
+                Long id = (Long) map.get("id"); //1 定位是哪个属性
+                String value = String.valueOf(map.get("value").toString()) ; //定位是哪个选项
+                Integer index = getIndex(skuProperties,id,value);
+                sb.append(index).append("_");
+            }
+            String indexDexs =  sb.toString();
+            indexDexs=  indexDexs.substring(0, indexDexs.lastIndexOf("_"));
+            sku.setIndexs(indexDexs);
+            skuMapper.insert(sku);
+        }
+    }
+
+    @Override
+    public List<Sku> querySkus(Long productId) {
+        Wrapper<Sku> w = new EntityWrapper<>();
+        w.eq("productId", productId);
+        return   skuMapper.selectList(w);
+    }
+
+    //获取某个属性选项索引值
+
+    /**
+     *  从所有的属性(里面包含选项)拿到某个属性某个选项索引值.
+     * @param skuProperties 所有的属性(里面包含选项)
+     * @param proId 要获取哪个属性
+     * @param value 哪个选项
+     * @return
+     */
+    private Integer getIndex(List<Map<String, Object>> skuProperties, Long proId, String value) {
+
+        for (Map<String, Object> skuProperty : skuProperties) {
+            Long proIdTmp = Long.valueOf(skuProperty.get("id").toString());
+            if (proIdTmp.longValue() == proId.longValue()){
+                //找到属性的选项
+                List<String> skuValues = (List<String>) skuProperty.get("skuValues");
+                int index = 0;
+                for (String skuValue : skuValues) {
+                    if(skuValue.equals(value)){
+                        return index;
+                    }
+                    index++;
+                }
+            }
+
+        }
+        return null;
+    }
+
+    private Long getProId(List<Map<String,Object>> skuProperties, String properName) {
+        for (Map<String,Object> skuProperty : skuProperties) {
+            Long spId = Long.valueOf(skuProperty.get("id").toString()) ;
+            String spName = (String) skuProperty.get("name");
+            if (properName.equals(spName)){
+                return spId;
+            }
+        }
+        return null;
     }
 
     @Override

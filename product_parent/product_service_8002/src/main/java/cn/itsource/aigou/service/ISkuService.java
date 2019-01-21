@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.service.IService;
  * </p>
  *
  * @author yhptest
- * @since 2019-01-19
+ * @since 2019-01-21
  */
 public interface ISkuService extends IService<Sku> {
 
