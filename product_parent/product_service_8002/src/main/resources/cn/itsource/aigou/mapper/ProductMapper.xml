@@ -88,4 +88,23 @@
         </association>
     </resultMap>
 
+
+    <!--void onSale(Map<String, Object> params);
+       in (1,2,3)
+    -->
+    <update id="onSale" parameterType="map">
+        UPDATE t_product set state = 1, onSaleTime = #{timeStamp} where id in
+        <foreach collection="ids"  item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </update>
+
+    <!--void offSale(Map<String, Object> params);-->
+    <update id="offSale" parameterType="map">
+        UPDATE t_product set state = 0, offSaleTime = #{timeStamp} where id in
+        <foreach collection="ids"  item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </update>
+
 </mapper>

@@ -48,4 +48,11 @@ public interface IProductService extends IService<Product> {
      * @return
      */
     List<Sku> querySkus(Long productId);
+
+    /**
+     * 上下架处理
+     * @param ids
+     * @param onSale
+     */
+    void onSale(String ids, Integer onSale);
 }

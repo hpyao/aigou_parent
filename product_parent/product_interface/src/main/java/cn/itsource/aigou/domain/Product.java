@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.xml.crypto.Data;
@@ -166,13 +167,8 @@ public class Product extends Model<Product> {
         this.productTypeId = productTypeId;
     }
 
-    public String getOnSaleTime() {
-        if (onSaleTime== null){
-            return null;
-        }
-        Date tmp = new Date(this.onSaleTime);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return df.format(tmp);
+    public Long getOnSaleTime() {
+        return onSaleTime;
     }
 
     public void setOnSaleTime(Long onSaleTime) {

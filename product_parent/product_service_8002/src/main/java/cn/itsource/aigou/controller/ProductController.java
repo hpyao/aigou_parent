@@ -30,15 +30,29 @@ public class ProductController {
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Product product){
         try {
-            if(product.getId()!=null){
-                productService.updateById(product);
-            }else{
-                productService.insert(product);
+                if(product.getId()!=null){
+                        productService.updateById(product);
+                    }else{
+                        productService.insert(product);
+                    }
+                return AjaxResult.me();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
             }
+        }
+    @RequestMapping(value="/onSale",method= RequestMethod.POST)
+    public AjaxResult onSale(@RequestBody Map<String,Object> params){
+        try {
+            String ids = (String) params.get("ids");//1,2,3
+            System.out.println(ids);
+            Integer onSale = Integer.valueOf(params.get("onSale").toString());
+            System.out.println(onSale);
+            productService.onSale(ids,onSale);
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setSuccess(false).setMessage("上下架失败！"+e.getMessage());
         }
     }
 

@@ -1,12 +1,11 @@
 package cn.itsource.aigou.service.impl;
+import cn.itsource.aigou.domain.*;
+import cn.itsource.aigou.mapper.*;
+import cn.itsource.aigou.util.StrUtils;
+import com.google.common.collect.Lists;
 
-import cn.itsource.aigou.domain.Product;
-import cn.itsource.aigou.domain.ProductExt;
-import cn.itsource.aigou.domain.Sku;
-import cn.itsource.aigou.domain.Specification;
-import cn.itsource.aigou.mapper.ProductExtMapper;
-import cn.itsource.aigou.mapper.ProductMapper;
-import cn.itsource.aigou.mapper.SkuMapper;
+import cn.itsource.aigou.client.ProductDocClient;
+import cn.itsource.aigou.index.ProductDoc;
 import cn.itsource.aigou.query.ProductQuery;
 import cn.itsource.aigou.service.IProductService;
 import cn.itsource.aigou.util.PageList;
@@ -15,10 +14,12 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rx.internal.util.unsafe.SpscUnboundedArrayQueue;
 
+import java.io.Serializable;
 import java.util.*;
 
 import static javax.swing.UIManager.get;
@@ -41,7 +42,16 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     private ProductExtMapper productExtMapper;
 
     @Autowired
+    private BrandMapper brandMapper;
+
+    @Autowired
+    private ProductTypeMapper productTypeMapper;
+
+    @Autowired
     private SkuMapper skuMapper;
+
+    @Autowired
+    private ProductDocClient productDocClient;
 
     @Override
     public PageList<Product> selectPageList(ProductQuery query) {
@@ -85,14 +95,14 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
             for (String key : skuData.keySet()) {
                 //price,stock,state是直接传递进来
                 if ("price".equals(key)){
-                    sku.setPrice(Integer.valueOf(skuData.get(key).toString()));
+                    sku.setPrice(Integer.valueOf(skuData.get(key).toString())*100);
                 }
                 else  if ("stock".equals(key)){
                     sku.setStock(Integer.valueOf(skuData.get(key).toString()));
                 }
                 else if ("state".equals(key)){
-                    Integer state = (Integer) skuData.get(key);
-                    sku.setState(state==1?true:false);
+                    Boolean state = (boolean) skuData.get(key);
+                    sku.setState(state);
                 }else{
                     //others 升高 三维
                     otherProp.put(key, skuData.get(key));
@@ -134,6 +144,34 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         Wrapper<Sku> w = new EntityWrapper<>();
         w.eq("productId", productId);
         return   skuMapper.selectList(w);
+    }
+
+    @Override
+    public void onSale(String ids, Integer onSale) {
+        List<Long> idsLong = StrUtils.splitStr2LongArr(ids);
+        if (1==onSale.intValue()){
+            //上架
+            //数据库状态和上架时间要修改 id 时间
+            Map<String,Object> params = new HashMap<>();
+            params.put("ids", idsLong);
+            params.put("timeStamp", new Date().getTime());
+            productMapper.onSale(params);
+            //添加esku
+            // productDocClient.batchDel(Arrays.asList(idsLong));
+            List<ProductDoc> productDocs = product2productDocs(idsLong);
+            productDocClient.batchSave(productDocs);
+        }else{
+            //下架
+            //数据库状态和下架时间要修改
+            Map<String,Object> params = new HashMap<>();
+            params.put("ids", idsLong);
+            params.put("timeStamp", new Date().getTime());
+            productMapper.offSale(params);
+            //删除esku
+            productDocClient.batchDel(idsLong);
+
+        }
+
     }
 
     //获取某个属性选项索引值
@@ -194,13 +232,10 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         //添加本表信息以外,还要存放关联表
         entity.setUpdateTime(new Date().getTime());
         productMapper.updateById(entity);
-
-
         //通过productId查询productExt
         Wrapper<ProductExt> wrapper = new EntityWrapper<ProductExt>()
                 .eq("productId", entity.getId());
         ProductExt productExt = productExtMapper.selectList(wrapper).get(0);
-
         //把前台传递进来值设置给数据库查询出来值,并且把它修改进去
         ProductExt tmp = entity.getProductExt();
         if ( tmp!= null) {
@@ -208,6 +243,84 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
             productExt.setRichContent(tmp.getRichContent());
             productExtMapper.updateById(productExt);
         }
+        // 如果是上架状态,要同步修改es库
+        if (entity.getState()==1){
+            ProductDoc productDoc = product2productDoc(entity);
+            productDocClient.save(productDoc);
+        }
+
         return true;
+    }
+
+    @Override
+    public boolean deleteById(Serializable id) {
+        super.deleteById(id);
+        //如果是上架状态,要同步删除es库
+        Product product = productMapper.selectById(id);
+        if (product.getState()==1){
+            productDocClient.del(Long.valueOf(id.toString()));
+        }
+        return true;
+    }
+
+    /**
+     * 转换多个
+     * @param ids
+     * @return
+     */
+    private List<ProductDoc> product2productDocs(List<Long> ids) {
+        List<ProductDoc> productDocs = new ArrayList<>();
+        for (Long id : ids) {
+            Product product = productMapper.selectById(id);
+            ProductDoc productDoc = product2productDoc(product);
+            productDocs.add(productDoc);
+        }
+        return productDocs;
+    }
+
+    /**
+     * 转换一个
+     * @param product
+     * @return
+     */
+    private ProductDoc product2productDoc(Product product) {
+
+        //选中 alt+enter
+        ProductDoc productDoc = new ProductDoc();
+        productDoc.setId(product.getId());
+        productDoc.setProuductTypeId(product.getProductTypeId());
+        productDoc.setBrandId(product.getBrandId());
+        //从某个商品sku中获取最大或最小
+        List<Sku> skus = skuMapper.selectList(new EntityWrapper<Sku>()
+                .eq("productId", product.getId()));
+
+        Integer minPrice  = skus.get(0).getPrice();
+        Integer maxPrice  = skus.get(0).getPrice();
+        for (Sku sku : skus) {
+            if (sku.getPrice()<minPrice) minPrice=sku.getPrice();
+            if (sku.getPrice()>maxPrice) maxPrice = sku.getPrice();
+        }
+        productDoc.setMinPrice(minPrice);
+        productDoc.setMaxPrice(maxPrice);
+        productDoc.setSaleCount(product.getSaleCount());
+        productDoc.setOnSaleTime(product.getOnSaleTime().intValue());
+        productDoc.setCommentCount(product.getCommentCount());
+        productDoc.setViewCount(product.getViewCount());
+        String medias = product.getMedias();
+        if (StringUtils.isNotBlank(medias)) {
+            productDoc.setImages(Arrays
+                    .asList(medias.split(",")));
+        }
+        Brand brand = brandMapper.selectById(product.getBrandId());
+        ProductType productType = productTypeMapper.selectById(product.getProductTypeId());
+        //投机-有空格就会分词
+        String all = product.getName()+" "
+                +product.getSubName()+" "+brand.getName()+" "+productType.getName();
+
+        productDoc.setAll(all);
+        productDoc.setViewProperties(product.getViewProperties());
+        productDoc.setSkuProperties(product.getSkuTemplate());
+        //设置值
+        return productDoc;
     }
 }

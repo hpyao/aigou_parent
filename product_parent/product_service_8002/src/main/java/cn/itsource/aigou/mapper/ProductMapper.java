@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.Page;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -24,4 +25,16 @@ public interface ProductMapper extends BaseMapper<Product> {
      * @return
      */
     List<Product> loadPageData(Page<Product> page, ProductQuery query);
+
+    /**
+     * 上架
+     * @param params
+     */
+    void onSale(Map<String, Object> params);
+
+    /**
+     * 下架
+     * @param params
+     */
+    void offSale(Map<String, Object> params);
 }
