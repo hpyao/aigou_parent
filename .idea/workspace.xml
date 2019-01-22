@@ -2,80 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aefc5833-927b-4dce-93a5-c7e5dfb1f504" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_carrotsearch_hppc_0_7_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_cbor_2_9_6.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_smile_2_9_6.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_yaml_2_9_6.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_spullara_mustache_java_compiler_0_9_3.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_tdunning_t_digest_3_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vividsolutions_jts_1_13.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_29_Final.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jopt_simple_jopt_simple_5_0_2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpasyncclient_4_1_4.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_nio_4_4_10.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_analyzers_common_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_backward_codecs_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_core_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_grouping_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_highlighter_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_join_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_memory_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_misc_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queries_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queryparser_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_sandbox_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_spatial3d_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_spatial_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_spatial_extras_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_suggest_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_client_elasticsearch_rest_client_5_6_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_client_transport_5_6_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_elasticsearch_5_6_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_jna_4_4_0_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_lang_mustache_client_5_6_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_parent_join_client_5_6_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_percolator_client_5_6_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_reindex_client_5_6_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_transport_netty4_client_5_6_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_securesm_1_2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_locationtech_spatial4j_spatial4j_0_6.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_elasticsearch_2_0_5_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_0_10_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_elasticsearch_3_0_10_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_interface/src/main/java/cn/itsource/aigou/client/ProductDocClient.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_interface/src/main/java/cn/itsource/aigou/client/ProductDocClientFallbackFactory.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_interface/src/main/java/cn/itsource/aigou/index/ProductDoc.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/src/main/java/cn/itsource/aigou/controller/ProductDocController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/src/main/java/cn/itsource/aigou/repository/ProductDocRepository.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/src/main/java/cn/itsource/aigou/service/IProductDocService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/src/main/java/cn/itsource/aigou/service/impl/ProductDocServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/src/main/resources/bootstrap_bak.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/src/test/java/cn/itsource/aigou/ProductDocInitTest.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/aigou_gen/src/main/java/cn/itsource/aigou/GenteratorCode.java" afterPath="$PROJECT_DIR$/aigou_gen/src/main/java/cn/itsource/aigou/GenteratorCode.java" />
-      <change beforePath="$PROJECT_DIR$/aigou_gen/target/classes/cn/itsource/aigou/GenteratorCode.class" afterPath="$PROJECT_DIR$/aigou_gen/target/classes/cn/itsource/aigou/GenteratorCode.class" />
-      <change beforePath="$PROJECT_DIR$/common_parent/common_interface/common_interface.iml" afterPath="$PROJECT_DIR$/common_parent/common_interface/common_interface.iml" />
-      <change beforePath="$PROJECT_DIR$/common_parent/common_interface/pom.xml" afterPath="$PROJECT_DIR$/common_parent/common_interface/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/common_parent/common_service_8010/common_service_8010.iml" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/common_service_8010.iml" />
-      <change beforePath="$PROJECT_DIR$/common_parent/common_service_8010/src/main/resources/bootstrap.yml" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/src/main/resources/bootstrap.yml" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_interface/src/main/java/cn/itsource/aigou/domain/Product.java" afterPath="$PROJECT_DIR$/product_parent/product_interface/src/main/java/cn/itsource/aigou/domain/Product.java" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/product_service_8002.iml" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/product_service_8002.iml" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/java/cn/itsource/aigou/controller/ProductController.java" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/java/cn/itsource/aigou/controller/ProductController.java" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/java/cn/itsource/aigou/mapper/ProductMapper.java" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/java/cn/itsource/aigou/mapper/ProductMapper.java" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/java/cn/itsource/aigou/service/IProductService.java" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/java/cn/itsource/aigou/service/IProductService.java" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/java/cn/itsource/aigou/service/impl/ProductServiceImpl.java" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/java/cn/itsource/aigou/service/impl/ProductServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/cn/itsource/aigou/mapper/ProductMapper.xml" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/cn/itsource/aigou/mapper/ProductMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-footer.vm" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-footer.vm" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-header-top.vm" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-header-top.vm" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-header.vm" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-header.vm" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-link.vm" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-link.vm" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-nav.vm" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-nav.vm" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-right-sidebar.vm" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/common-right-sidebar.vm" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/home.vm" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/home.vm" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/productType/product.type.vm" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/productType/product.type.vm" />
-      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/productType/product.type.vm.html" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/src/main/resources/template/productType/product.type.vm.html" />
+      <change beforePath="$PROJECT_DIR$/common_parent/common_service_8010/target/classes/bootstrap.yml" afterPath="$PROJECT_DIR$/common_parent/common_service_8010/target/classes/bootstrap.yml" />
+      <change beforePath="$PROJECT_DIR$/product_parent/product_interface/target/classes/cn/itsource/aigou/domain/Product.class" afterPath="$PROJECT_DIR$/product_parent/product_interface/target/classes/cn/itsource/aigou/domain/Product.class" />
+      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/controller/ProductController.class" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/controller/ProductController.class" />
+      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/mapper/ProductMapper.class" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/mapper/ProductMapper.class" />
+      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/mapper/ProductMapper.xml" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/mapper/ProductMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/service/IProductService.class" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/service/IProductService.class" />
+      <change beforePath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/service/impl/ProductServiceImpl.class" afterPath="$PROJECT_DIR$/product_parent/product_service_8002/target/classes/cn/itsource/aigou/service/impl/ProductServiceImpl.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -639,7 +572,7 @@
       <workItem from="1547773097139" duration="9285000" />
       <workItem from="1547859436762" duration="11531000" />
       <workItem from="1548032246368" duration="17357000" />
-      <workItem from="1548118439894" duration="18128000" />
+      <workItem from="1548118439894" duration="18262000" />
     </task>
     <task id="LOCAL-00001" summary="测试">
       <created>1547091876753</created>
@@ -676,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547805854019</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="测试">
+      <created>1548147563465</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1548147563465</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -712,7 +652,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131766000" />
+    <option name="totallyTimeSpent" value="131900000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -745,11 +685,11 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.95925295" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.803056" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767403" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767403" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28895614" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28895614" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1335,7 +1275,7 @@
         <state relative-caret-position="175">
           <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
           <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
