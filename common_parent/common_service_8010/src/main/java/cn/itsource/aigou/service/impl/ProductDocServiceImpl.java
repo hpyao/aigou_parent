@@ -1,4 +1,5 @@
 package cn.itsource.aigou.service.impl;
+import com.google.common.collect.Lists;
 
 import cn.itsource.aigou.index.ProductDoc;
 import cn.itsource.aigou.repository.ProductDocRepository;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
+import sun.applet.Main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,12 +103,12 @@ public class ProductDocServiceImpl implements IProductDocService{
         String sortField = (String) params.get("sortField"); //排序
         String sortType = (String) params.get("sortType");//排序
 
-        Long productyType = Long.valueOf(params.get("productyType").toString());//过滤
-        Long brandId = Long.valueOf(params.get("brandId").toString());//过滤
-        Long priceMin = Long.valueOf(params.get("priceMin").toString());//过滤
-        Long priceMax = Long.valueOf(params.get("priceMax").toString());//过滤
-        Long page = Long.valueOf(params.get("page").toString()); //分页
-        Long rows = Long.valueOf(params.get("rows").toString());//分页
+        Long productType = params.get("productType") !=null?Long.valueOf(params.get("productType").toString()):null;//过滤
+        Long brandId = params.get("brandId") !=null?Long.valueOf(params.get("brandId").toString()):null;//过滤
+        Long priceMin = params.get("priceMin") !=null?Long.valueOf(params.get("priceMin").toString())*100:null;//过滤
+        Long priceMax = params.get("priceMax") !=null?Long.valueOf(params.get("priceMax").toString())*100:null;//过滤
+        Long page = params.get("page") !=null?Long.valueOf(params.get("page").toString()):null; //分页
+        Long rows = params.get("rows") !=null?Long.valueOf(params.get("rows").toString()):null;//分页
 
         //构建器
         NativeSearchQueryBuilder builder = new NativeSearchQueryBuilder();
@@ -116,16 +118,24 @@ public class ProductDocServiceImpl implements IProductDocService{
             boolQuery.must(QueryBuilders.matchQuery("all", keyword));
         }
         List<QueryBuilder> filter = boolQuery.filter();
-        if (productyType != null){ //类型
-            filter.add(QueryBuilders.termQuery("prouductTypeId", productyType));
+        if (productType != null){ //类型
+            System.out.println(productType+"jjjjjjjjjjjjjjjjjjj");
+            filter.add(QueryBuilders.termQuery("prouductTypeId", productType));
         }
         if (brandId != null){ //品牌
             filter.add(QueryBuilders.termQuery("brandId", brandId));
         }
         //最大价格 最小价格
+        //minPrice <= priceMax && maxPrice>=priceMin
+        if(priceMax!=null){
+            filter.add(QueryBuilders.rangeQuery("minPrice").lte(priceMax));
+        }
+        if(priceMin!=null){
+            filter.add(QueryBuilders.rangeQuery("maxPrice").gte(priceMax));
+        }
 
         builder.withQuery(boolQuery);
-
+        //排序
         SortOrder defaultSortOrder = SortOrder.DESC;
         if (StringUtils.isNotBlank(sortField)){//销量 新品 价格 人气 评论
             //如果传入的不是降序改为升序
@@ -158,7 +168,6 @@ public class ProductDocServiceImpl implements IProductDocService{
                 }
             }
         }
-        //排序
         //分页
         Long pageTmp = page-1; //从0开始
         builder.withPageable(PageRequest.of(pageTmp.intValue(), rows.intValue()));
@@ -167,6 +176,10 @@ public class ProductDocServiceImpl implements IProductDocService{
         Page<ProductDoc> productDocs = repository.search(builder.build());
         List<Map<String,Object>> datas = productDocs2ListMap(productDocs.getContent());
         return new PageList<>(productDocs.getTotalElements(),datas);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Long.valueOf(null));
     }
 
     /**
@@ -186,9 +199,18 @@ public class ProductDocServiceImpl implements IProductDocService{
 
     private Map<String,Object> productDoc2Map(ProductDoc productDoc) {
         Map<String,Object> result = new HashMap<>();
-        //TODO
          result.put("id", productDoc.getId());
-        // result.put("name", productDoc.getName());
+         result.put("name", productDoc.getName());
+         result.put("productTypeId", productDoc.getProuductTypeId());
+         result.put("brandId", productDoc.getBrandId());
+         result.put("minPrice", productDoc.getMinPrice());
+         result.put("maxPrice", productDoc.getMaxPrice());
+
+         result.put("saleCount", productDoc.getSaleCount());
+         result.put("onSaleTime", productDoc.getOnSaleTime());
+         result.put("commentCount", productDoc.getCommentCount());
+         result.put("viewCount", productDoc.getViewCount());
+         result.put("images", productDoc.getImages());
         return result;
     }
 }
