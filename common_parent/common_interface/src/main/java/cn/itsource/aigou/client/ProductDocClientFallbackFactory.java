@@ -40,7 +40,7 @@ public class ProductDocClientFallbackFactory implements FallbackFactory<ProductD
             }
 
             @Override
-            public PageList<ProductDoc> search(Map<String, Object> params) {
+            public PageList<Map<String,Object>> search(Map<String, Object> params) {
                 return null;
             }
         };

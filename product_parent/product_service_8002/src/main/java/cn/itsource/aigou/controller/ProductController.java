@@ -1,5 +1,6 @@
 package cn.itsource.aigou.controller;
 
+import cn.itsource.aigou.client.ProductDocClient;
 import cn.itsource.aigou.domain.Sku;
 import cn.itsource.aigou.domain.Specification;
 import cn.itsource.aigou.mapper.SkuMapper;
@@ -22,6 +23,22 @@ public class ProductController {
     @Autowired
     public IProductService productService;
 
+
+    @Autowired
+    private ProductDocClient productDocClient;
+
+    /**
+     * 保存和修改公用的
+     * @param query  传递的实体
+     * @return Ajaxresult转换结果
+     */
+    @RequestMapping(value="/queryProducts",method= RequestMethod.POST)
+    public PageList<Map<String,Object>> query(@RequestBody Map<String,Object> query){
+        //从es中查询
+        //query  keyword productyType brandId priceMin priceMax sortField sortType page rows
+        //使用Map后,不用拷贝productDoc和Product直接转换
+        return productDocClient.search(query);
+    }
     /**
     * 保存和修改公用的
     * @param product  传递的实体

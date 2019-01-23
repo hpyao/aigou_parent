@@ -12,6 +12,8 @@ import java.util.List;
 public class ProductDoc {
     @Id
     private Long id;
+
+    private String name;
     //类型id
     private Long prouductTypeId;
     //品牌id
@@ -146,5 +148,13 @@ public class ProductDoc {
 
     public void setSkuProperties(String skuProperties) {
         this.skuProperties = skuProperties;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -16,7 +16,7 @@ spring:
       server:
         native:
           search-locations: C:/Users/Administrator/Desktop/aigou-config2
-#        git:
-#          uri: https://github.com/hpyao/aigou-config2.git
-#          username: hpyao
-#          password: Itsource20180731
+        git:
+          uri: https://github.com/hpyao/aigou-config2.git
+          username: hpyao
+          password: Itsource20180731

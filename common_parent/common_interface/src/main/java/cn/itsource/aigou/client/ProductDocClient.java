@@ -31,5 +31,5 @@ public interface ProductDocClient {
     AjaxResult batchDel(@RequestBody List<Long> ids); //批量上传
     //分页搜索
     @RequestMapping(value = "/search",method = RequestMethod.GET)
-    PageList<ProductDoc> search(Map<String,Object> params); //搜索
+    PageList<Map<String,Object>> search(Map<String,Object> params); //搜索
 }

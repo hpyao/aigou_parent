@@ -46,5 +46,5 @@ public interface IProductDocService
      * @param params
      * @return
      */
-    PageList<ProductDoc> search(Map<String, Object> params);
+    PageList<Map<String,Object>> search(Map<String, Object> params);
 }

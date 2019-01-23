@@ -1,5 +1,6 @@
 package cn.itsource.aigou.controller;
 
+import cn.itsource.aigou.domain.Brand;
 import cn.itsource.aigou.service.IProductTypeService;
 import cn.itsource.aigou.domain.ProductType;
 import cn.itsource.aigou.query.ProductTypeQuery;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/productType")
@@ -92,5 +95,28 @@ public class ProductTypeController {
         Page<ProductType> page = new Page<ProductType>(query.getPage(),query.getRows());
             page = productTypeService.selectPage(page);
             return new PageList<ProductType>(page.getTotal(),page.getRecords());
+    }
+
+    //获取面包屑
+
+    //获取用户
+    @RequestMapping(value = "/crumbs/{id}",method = RequestMethod.GET)
+    public List<Map<String,Object>> getCrumbs(@PathVariable("id")Long productTypeId)
+    {
+        return productTypeService.getCrumbs(productTypeId);
+    }
+
+    //获取品牌
+    @RequestMapping(value = "/brands/{id}",method = RequestMethod.GET)
+    public List<Brand> getBrands(@PathVariable("id")Long productTypeId)
+    {
+        return productTypeService.getBrands(productTypeId);
+    }
+
+    //获取首字母
+    @RequestMapping(value = "/brands/letters/{id}",method = RequestMethod.GET)
+    public Set<String> getLetters(@PathVariable("id")Long productTypeId) //treeSet
+    {
+        return productTypeService.getLetters(productTypeId);
     }
 }

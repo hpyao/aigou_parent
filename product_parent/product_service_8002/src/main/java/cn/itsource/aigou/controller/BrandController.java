@@ -4,11 +4,13 @@ import cn.itsource.aigou.service.IBrandService;
 import cn.itsource.aigou.domain.Brand;
 import cn.itsource.aigou.query.BrandQuery;
 import cn.itsource.aigou.util.AjaxResult;
+import cn.itsource.aigou.util.LetterUtil;
 import cn.itsource.aigou.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,10 +26,14 @@ public class BrandController {
     */
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Brand brand){
+
         try {
+            brand.setFirstLetter(LetterUtil.getFirstLetter(brand.getName()));
             if(brand.getId()!=null){
+                brand.setUpdateTime(new Date().getTime());
                 brandService.updateById(brand);
             }else{
+                brand.setCreateTime(new Date().getTime());
                 brandService.insert(brand);
             }
             return AjaxResult.me();

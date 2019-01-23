@@ -288,6 +288,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         //选中 alt+enter
         ProductDoc productDoc = new ProductDoc();
         productDoc.setId(product.getId());
+        productDoc.setName(product.getName());
         productDoc.setProuductTypeId(product.getProductTypeId());
         productDoc.setBrandId(product.getBrandId());
         //从某个商品sku中获取最大或最小

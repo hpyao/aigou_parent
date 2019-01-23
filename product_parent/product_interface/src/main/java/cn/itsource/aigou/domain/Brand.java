@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
+import java.beans.Beans;
 import java.io.Serializable;
 
 /**
@@ -17,7 +19,6 @@ import java.io.Serializable;
  */
 @TableName("t_brand")
 public class Brand extends Model<Brand> {
-
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)

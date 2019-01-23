@@ -78,6 +78,12 @@
             <version>1.2</version>
         </dependency>
 
+        <!--springboot 对spring data es支持-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
     </dependencies>
 
     <!--打包插件依赖-->

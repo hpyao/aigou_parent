@@ -2,9 +2,12 @@ package cn.itsource.aigou.service.impl;
 
 import cn.itsource.aigou.client.PageClient;
 import cn.itsource.aigou.client.RedisClient;
+import cn.itsource.aigou.domain.Brand;
 import cn.itsource.aigou.domain.ProductType;
+import cn.itsource.aigou.mapper.BrandMapper;
 import cn.itsource.aigou.mapper.ProductTypeMapper;
 import cn.itsource.aigou.service.IProductTypeService;
+import cn.itsource.aigou.util.StrUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -16,10 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p>
@@ -39,6 +39,63 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
     private PageClient pageClient;
     @Autowired
     private ProductTypeMapper productTypeMapper;
+
+    @Autowired
+    private BrandMapper brandMapper;
+
+    @Override
+    public List<Brand> getBrands(Long productTypeId) {
+        return brandMapper.selectList(
+                new EntityWrapper<Brand>().eq("product_type_id", productTypeId));
+    }
+
+    @Override
+    public Set<String> getLetters(Long productTypeId) {
+        Set<String> result = new TreeSet<>(); //不重复且排序集合
+        List<Brand> brands = getBrands(productTypeId);
+        for (Brand brand : brands) {
+            result.add(brand.getFirstLetter());
+        }
+        return result;
+    }
+
+    @Override
+    public List<Map<String, Object>> getCrumbs(Long productTypeId) {
+        List<Map<String,Object>> result = new ArrayList<>();
+        //1 通过productTypeId查ProductType,从里面获取path .1.2.3.
+        ProductType productType = productTypeMapper.selectById(productTypeId);
+        String path = productType.getPath();
+        System.out.println(path);
+        //2 分割path获取层级id集合,遍历每一级的id 1 2 3
+        path = path.substring(1, path.length()-1); //1.2.3
+        List<Long> ids = StrUtils.splitStr2LongArr(path,"\\.");
+        System.out.println(ids);
+        for (Long id : ids) {
+            Map<String,Object> node = new HashMap<>();
+            //3 使用遍历id构造一个节点
+            //3.1 获取自己 通过id查询就ok
+            ProductType owner = productTypeMapper.selectById(id);
+            node.put("ownerProductType", owner);
+            //3.2 通过自己pid,查询所有的儿子,再删除自己
+            Long pid = owner.getPid();
+            List<ProductType> parentAllChildren = productTypeMapper
+                    .selectList(new EntityWrapper<ProductType>().eq("pid", pid));
+            Iterator<ProductType> iterator = parentAllChildren.iterator();
+            while (iterator.hasNext()){
+                ProductType curent = iterator.next();
+                if (curent.getId().longValue()== owner.getId().longValue()){
+                    //父亲儿子中我,要干掉.
+                    iterator.remove();
+                    break;
+                }
+            }
+            node.put("otherProductTypes", parentAllChildren);
+            result.add(node);
+        }
+
+        return result;
+    }
+
     @Override
     public List<ProductType> treeData()
     {
@@ -60,7 +117,6 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
 
 
     }
-
 
     //增删改已经不是传统的了,要做同步redis-清空缓存,下次查询时,自动查询数据库
     @Override
