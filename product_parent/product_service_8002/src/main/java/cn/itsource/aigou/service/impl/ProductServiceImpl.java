@@ -1,6 +1,9 @@
 package cn.itsource.aigou.service.impl;
+import cn.itsource.aigou.client.PageClient;
+import cn.itsource.aigou.controller.SpecificationController;
 import cn.itsource.aigou.domain.*;
 import cn.itsource.aigou.mapper.*;
+import cn.itsource.aigou.service.IProductTypeService;
 import cn.itsource.aigou.util.StrUtils;
 import com.google.common.collect.Lists;
 
@@ -160,6 +163,8 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
             // productDocClient.batchDel(Arrays.asList(idsLong));
             List<ProductDoc> productDocs = product2productDocs(idsLong);
             productDocClient.batchSave(productDocs);
+            //生成静态页面
+            staticDetailPage(productDocs);
         }else{
             //下架
             //数据库状态和下架时间要修改
@@ -172,6 +177,54 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
         }
 
+    }
+
+    @Autowired
+    private PageClient pageClient;
+    @Autowired
+    private IProductTypeService productTypeService;
+    private void staticDetailPage(List<ProductDoc> productDocs) {
+        for (ProductDoc productDoc : productDocs) {
+            //在静态化主页
+            staticDetaiPage(productDoc);
+        }
+
+    }
+
+    private void staticDetaiPage(ProductDoc productDoc) {
+        Map<String,Object> IndexParams = new HashMap<>();
+        Map<String, Object> modelMap = new HashMap<>();
+        modelMap.put("staticRoot", "E:\\openSource\\IdeaProjects\\aigou_parent\\product_parent\\product_service_8002\\src\\main\\resources\\");
+        //面包屑
+        Long prouductTypeId = productDoc.getProuductTypeId();
+        List<Map<String, Object>> crumbs = productTypeService
+                .getCrumbs(prouductTypeId);
+        modelMap.put("crumbs",crumbs );
+        //商品
+        modelMap.put("product",productDoc );
+        //规格参数
+        modelMap.put("viewProperties", JSONArray
+                .parseArray(productDoc.getViewProperties(), Specification.class));
+        //详情
+        ProductExt productExt = productExtMapper.selectList(new EntityWrapper<ProductExt>()
+                .eq("productId", productDoc.getId())).get(0);
+        modelMap.put("productExt",productExt);
+
+        //sku选项
+        modelMap.put("skuOptions", JSONArray
+                .parseArray(productDoc.getSkuProperties(), Specification.class));
+        modelMap.put("skuOptionStrs", productDoc.getSkuProperties());
+
+        //skuString返回,用于缓存到界面.
+        List<Sku> skus = skuMapper.selectList(new EntityWrapper<Sku>()
+                .eq("productId", productDoc.getId()));
+        skus.forEach(sku->sku.setSkuValues(null)); //把skuValues都设置为null,前台处理不了.
+        modelMap.put("skus", JSONArray.toJSONString(skus));
+
+        IndexParams.put("model",modelMap );
+        IndexParams.put("tmeplatePath","E:\\openSource\\IdeaProjects\\aigou_parent\\product_parent\\product_service_8002\\src\\main\\resources\\template\\detail\\product-detail.vm" );
+        IndexParams.put("staticPagePath","E:\\openSource\\IdeaProjects\\aigou_web_parent\\aigou_shopping\\pages\\"+productDoc.getId()+".html" );
+        pageClient.genStaticPage(IndexParams);
     }
 
     //获取某个属性选项索引值
